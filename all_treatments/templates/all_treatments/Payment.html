@@ -1,0 +1,61 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block styles %}
+    <style>
+        p,li{
+            font-size:18px;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+    Payment 
+{% endblock %}
+
+{% block content %}
+
+    <h4>
+        Round {{round}}
+    </h4>
+    <br>
+    
+    {% if player.id_in_group == 1%}
+    
+        <p>
+            Your payment for this task is <b>{{ player.payment}}</b> (where {{player.payment}} equals 10 - {{player.reported_number}}). 
+        </p>
+
+        
+
+    {% else %}
+
+        {% if player.treatment == 'clear_signal' or player.treatment == 'clear_signal_ecu'%}
+            <p>
+                The secret number was equal to <b>{{player.secret_number}}</b>.      
+            </p>
+        {% else %}
+            <p>The secret number is between <b> 0 and 10</b>.</p>
+        {% endif %}
+        
+
+        <p>
+            <b>PLAYER 1</b> reported that the secret number was {{player.reported_number}}. Your payment for this portion of this experiment is <b>{{player.payment}}</b>.
+        </p>
+
+    {% endif %}
+
+    {% if player.treatment == 'clear_signal'  or player.treatment == 'concealed_signal' %}
+    <p>
+        It this round is selected for payment you will earn <b>{{player.payment}}</b>
+    </p>
+    {% endif %}
+
+    <p>
+        The next round will start shortly! 
+    </p>
+
+
+    {% next_button %}
+
+{% endblock %}

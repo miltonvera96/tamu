@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block styles %}
+    <style>
+        p,li{
+            font-size:18px;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+Two Qualitative Questions
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        <b>How important is honesty to you?</b>
+    </p>
+    {% formfield player.q2 label='' %}
+
+    <br>
+    <p>
+        <b>Should PLAYER 1 be rewarded for honesty? How so?</b>
+    </p>
+    {% formfield player.q3 label='' %}
+
+    {% next_button %}
+{% endblock %}

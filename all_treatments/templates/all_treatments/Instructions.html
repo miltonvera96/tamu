@@ -1,0 +1,71 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block styles %}
+    <style>
+        p,li{
+            font-size:18px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block title %}
+    
+    {% if player.id_in_group == 1%}
+        Player 1 Instructions
+    {% else %}
+        Player 2 Instructions
+    {% endif%}
+
+{% endblock %}
+
+{% block content %}
+
+    {% if player.id_in_group == 1%}
+
+        <br>
+        <p class="text-justify">
+            You have been randomly assigned the role of <b>PLAYER 1</b>. You will remain in this role for the remainder of this task. As PLAYER 1, you will receive an allocation of <b>{{ten}}</b>. Within the next stage of the experiment, for each round, the computer will randomly display a <b>secret number</b> representing the amount you should send to <b>PLAYER 2</b>. This secret number ranges from 0 to 10 in increments of {{one}}. Your task is to decide the amount you want to report as the secret number to PLAYER 2. 
+        </p>
+        
+        <br>
+        <p class="text-center">
+            <b>YOU may report any number you wish to report (from 0 to 10).</b> 
+        </p>
+        <br>
+
+        <p>Your payment from this task is {{ten}} minus the amount you report as the secret number to PLAYER 2.</p>
+
+        <p><b>For example,</b>  if YOU report that the secret number is 2, your payment will be equal to {{sub}} or {{eigth}}. PLAYER 2 will receive {{two}}.</p>
+
+        <p><b>Another example,</b> if YOU report that the secret number is 8, your payment will be equal to {{sub2}} or {{two}}. PLAYER 2 will receive {{eigth}}.</p>
+    {% else %}
+
+    <br>
+        <P class="text-justify">
+            You have been randomly assigned the role of <b>PLAYER 2</b>. You will remain in this role for the remainder of this task. <b>PLAYER 1</b> received an allocation of <b>10 ECU</b>. Within the next stage of the experiment, for each round, the computer will randomly display a <b>secret number</b> representing the amount PLAYER 1 should <b>send</b> to YOU. This secret number ranges from 0 to 10 in increments of {{one}}.
+        </P>
+
+        <p>
+            PLAYER 1 will report the value of the secret number. PLAYER 1 may report any number he/she wishes to report. 
+        </p>
+
+        <p class="text-center">
+            <b>Your payment for this task is equal to the amount PLAYER 1 reports as the secret number.</b> 
+        </p>
+
+        {% if player.treatment == 'clear_signal' or player.treatment == 'clear_signal_ecu'%}
+            <p>YOU will receive a signal about the value of the secret number. The signal YOU will receive is <b>exactly equal</b> to the computer’s secret number. </p>
+        {% else %}
+            <p>YOU will receive a signal about the value of the secret number. The signal YOU will receive is that the value of the secret number ranges between <b>0 and 10</b>. </p>
+        {% endif %}
+
+    {% endif%}
+
+    <p>
+        Please click next to continue with the experiment.
+    </p>
+
+    {% next_button %}
+{% endblock %}

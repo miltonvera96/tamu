@@ -1,0 +1,48 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block styles %}
+    <style>
+        p,li{
+            font-size:18px;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+{% block content %}
+
+    <p class="text-justify">
+        Within the next part of the experiment, you will complete a task {{Constants.first_rounds}}+ times. There will be a 25% chance to play an additional round after {{Constants.first_rounds}} rounds.
+    </p>
+
+    {% if player.treatment == 'clear_signal'  or player.treatment == 'concealed_signal'  %}
+
+        <p class="text-justify">
+            <b>For the remainder of the experiment, we will use experimental currency units (ECU) to track your payment. Each ECU will be exchanged for $1 at the end of the experiment.</b>
+        </p>
+        <p class="text-justify">
+            <b> One of your {{Constants.first_rounds}}+ rounds will be randomly drawn and used for your final payment. </b>
+        </p>
+
+        <p class="text-justify">
+            For example, if you earned 5 ECU in round 15 and round 15 was drawn for your final payment, you will earn an additional 5 ECU.
+        </p>
+
+
+
+    {% else %}
+        <p class="text-justify">
+            <b>For the remainder of the experiment, we will use experimental currency units (ECU) to track your overall payment. Each ECU will be exchanged for $0.05 at the end of the experiment.</b>
+        </p>
+    {% endif %}
+    
+
+
+    {% next_button %}
+{% endblock %}
+
+

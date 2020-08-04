@@ -1,0 +1,48 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block styles%}
+    <style>
+        p,li{
+          font-size: 18px;  
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+Guess the Secret Number 
+{% endblock %}
+
+{% block content %}
+
+    <ul>
+        <li>
+            <p>
+                <b>What do you think the value of the secret number was?</b> 
+                <br>
+                If this round is selected for payment and you answer correctly, you will earn $1.
+            </p>
+            {% formfield player.guessing_secret_number%}
+        
+            <br>
+        </li>
+        <li>
+            <p>
+                <b>How many PLAYER 1 participants reported the secret number truthfully?</b> 
+                <br>
+                If this round is selected for payment and you answer correctly, you will earn $1.
+            </p>
+            <p>
+                The number of <b>players 1</b> in the room is: <b>{{number_players}}</b>. 
+            </p>
+            {% formfield player.guessing_players %}
+        </li>
+    </ul>
+
+    
+    
+
+
+{% next_button %}
+
+{% endblock %}

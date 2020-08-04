@@ -1,0 +1,68 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block styles %}
+    <style>
+        p,li{
+            font-size:18px;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+    Final Payment
+{% endblock %}
+
+{% block content %}
+
+
+    {% if player.selected %}
+        <p>
+            Round selected to pay <b>{{Constants.round_selected_plus}}</b>
+        </p>
+        
+        {% if player.id_in_group == 1%}
+    
+            <p>
+                Your payment for this round is <b>{{player.final_payment|floatformat:2}}</b> (where {{player.final_payment}} equals 10 - {{reported_number}}). 
+            </p>
+        
+        {% else %}
+
+            <p>
+                <b>PLAYER 1</b> reported that the secret number in this round was {{player.final_payment|floatformat:2}}. Your payment for this portion of this experiment is <b>{{player.final_payment|floatformat:2}}</b>.
+            </p>
+
+        {% endif %}
+
+        <p>
+            <b>Your final payment is</b> {{player.final_payment|floatformat:2}}
+        </p>
+    {% else %}
+        <p>
+            Round selected to pay <b>{{Constants.round_selected_normal}}</b>
+        </p>
+       
+        {% if player.id_in_group == 1%}
+    
+            <p>
+                Your payment for this round is <b>{{player.final_payment|floatformat:2}}</b> (where {{player.final_payment|floatformat:2}} equals 10 - {{reported_number|floatformat:2}}). 
+            </p>
+        
+        {% else %}
+
+            <p>
+                <b>PLAYER 1</b> reported that the secret number in this round was {{reported_number}}. Your payment for this portion of this experiment is <b>{{player.final_payment|floatformat:2}}</b>.
+            </p>
+
+        {% endif %}
+
+        <p>
+            <b>Your final payment is</b> {{player.final_payment|floatformat:2}}
+        </p>
+    {% endif %}
+
+
+
+{% next_button %}
+{% endblock %}

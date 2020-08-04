@@ -1,0 +1,50 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block styles %}
+    <style>
+        p,li{
+            font-size:18px;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+Instructions
+{% endblock %}
+
+{% block content %}
+
+    <p class="text-justify">
+        For this task, you will be paired with another participant in the room to decide how to split <b>{{ten}}</b>. Your partner will not know your name and all your interactions will remain anonymous. 
+
+    </p>
+    <p class="text-justify">
+        After the first set of partners are assigned, you will be assigned the role of <b>PLAYER 1</b> and <b>PLAYER 2</b> with the following probabilities.
+    </p>
+
+    <table class="table table-hover text-center">
+        <thead class="table-active">
+            <td scope="col"><b>PLAYER 1</b></td>
+            <td scope="col"><b>PLAYER 2</b></td>
+        </thead>
+        <tbody>
+            <tr class="table-light">
+                <td>50 %</td>
+                <td>50%</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="text-justify">    
+        Your assigned role will continue for the remainder of the experiment. However, each round your assigned partner will be a different person in the room. 
+    </p>
+
+    <p class="text-justify">
+        <b>PLAYER 1</b> will receive an allocation of <b>{{ten}}</b> and will be asked to decide how to split this amount with <b>PLAYER 2</b>. You will be provided with more details on the following screens.
+    </p>
+
+
+    {% next_button %}
+{% endblock %}
+

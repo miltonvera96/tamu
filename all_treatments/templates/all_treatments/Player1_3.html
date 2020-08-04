@@ -1,0 +1,34 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block styles %}
+    <style>
+        p,li{
+            font-size:18px;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+    Player 1 Instructions
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        You will now report the amount for the secret number. The amount you report will be sent over to PLAYER 2. Your reported amount does <b>not</b> have to be the true secret value. Please remember that the amount you report will be deducted from your 10 ECU allocation. 
+    </p>
+
+    {% if player.round_number > 1 %}
+        {% if player.treatment == 'clear_signal' or player.treatment == 'clear_signal_ecu'%}
+            <p>Remember that PLAYER 2 will receive a signal that is <b>exactly equal</b> to the secret number.</p>
+        {% else %}
+            <p>Remember that PLAYER 2 will receive a signal that the secret number is between 0 and 10.</p>
+        {% endif %}
+    {% endif %}
+    
+    {% formfield player.reported_number %}
+    
+    {% next_button %}
+
+{% endblock %}

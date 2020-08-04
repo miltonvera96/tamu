@@ -1,0 +1,36 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block styles %}
+    <style>
+        p,li{
+            font-size:18px;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+    Player 1 Instructions
+{% endblock %}
+
+{% block content %}
+
+    {% if player.treatment == 'clear_signal' or player.treatment == 'clear_signal_ecu'%}
+        <p>
+            <b>PLAYER 2</b> will receive a signal about the value of the secret number. The signal that PLAYER 2 will receive is <b>exactly equal</b> to the secret number. 
+                
+        </p>
+    {% else %}
+        <p>
+            <b>PLAYER 2</b> will receive a signal about the value of the secret number. The signal that PLAYER 2 will receive that the secret number is between <b>0 and 10</b>. 
+                
+        </p>
+    {% endif %}
+    
+    <p>
+        Before moving on, we will briefly check your understanding of the procedures. 
+    </p>
+    {% formfield player.q1 label="If the computer displays a secret number of 4, you can only report and send 4 ECU to PLAYER 2?" %}
+    {% next_button %}
+
+{% endblock %}
